@@ -9,7 +9,7 @@ Board::Board(size_t height, size_t width, size_t seed)
     std::random_device dev;
     mt19937 generator(seed ? seed : dev()); // seed the generator
     uniform_int_distribution<> range4postX(0, height-1); // define the range
-    uniform_int_distribution<> range4postY(0, width-1); // define the range
+    uniform_int_distribution<> range4postY(0, width-1);
 
     vector<pair<bool, char>> row;
 

@@ -115,7 +115,7 @@ void Game::play() {
                 window->setAnnouncement("You have won");
                 cvarRender.notify_one();
                 this_thread::sleep_for(std::chrono::seconds(1));
-                !singlePly ? window->setAnnouncement("Player 1 had " + to_string(guesses) + " guesses\n" "Player 2 had" + to_string(guesses2) + " guesses") : window->setAnnouncement("It took you " + to_string(guesses) + " guesses to finish");
+                !singlePly ? window->setAnnouncement("Player 1 had " + to_string(ply1guesses) + " guesses\n" "Player 2 had" + to_string(ply2guesses) + " guesses") : window->setAnnouncement("It took you " + to_string(ply1guesses) + " guesses to finish");
                 this_thread::sleep_for(std::chrono::seconds(1));
                 isRunning = false;
             }
@@ -177,6 +177,6 @@ void Game::incrementGuesses() {
     while (isRunning) {
         unique_lock<std::mutex> lg(mtx);
         cvarIncrement.wait(lg);
-        ply == 1 ? guesses++ : guesses2++;
+        ply == 1 ? ply1guesses++ : ply2guesses++;
     }
 }

@@ -36,13 +36,10 @@ void Window::renderBoard() {
         rowCoord++;
         cout << "\n\r";
     }
-    cout << WIN << announcement << "\n\r" << RESET;
+    cout << TXT << announcement << "\n\r" << RESET;
     cout << "> " << flush;
 }
 
 void Window::setAnnouncement(const string &str) {
     announcement = str;
 }
-
-
-
