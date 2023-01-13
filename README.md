@@ -1,92 +1,32 @@
-# Pexeso
+# Pexeso 
 
+## Zadání
 
+Jedním z témat pro semestrální práci bylo vytvořit hru v terminálu. Vybrala jsem si hru pexeso, která je postavena na klasických pravidlech této známé hry. Hráč se tedy snaží najít vždy dvojici stejných karet. V každém kole má možnost odhalit právě dvě karty jejich otočením. Jestliže jsou karty totožné, zůstanou karty odhalené a hráč může pokračovat dalším kolem. Nejsou-li karty stejné, otočí se nazpět a na řadě je další hráč. Hra je ukončena ve chvíli, kdy jsou všechny karty otočeny a vyhrává ten, který má nejvíc uhádnutých dvojiček. Hra je naimplementována pro jednoho nebo dva hráče.
 
-## Getting started
+## Ovládání hry
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+Na začátku hry se od hráče vyžaduje jednotlivé zadání číslic, které určují počet hráčů, rozměry hracího pole a tzv. seedu. Následně se uživateli vykreslí jim zvolené pole sestávající z písmen – řádků, číslic – sloupců a karet. Otočené karty symbolizuje znak @. Po otočení karty je odhalen daný char. Hráč ovládá hru zadáním souřadnic karty, kterou si přeje odhalit. První souřadnice vyžaduje velké písmeno, jež určuje řádek, a číslici určující sloupec. Validní souřadnicí je tak například A0, A 0 nebo dokonce pouhé A. Dále má hráč možnost hru okamžitě ukončit skrze „q“ , které ale bude vyhodnoceno jako quit pouze po vykreslení pole a před odhalením všech karet.
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+## Nastavení hry
 
-## Add your files
+Poskytovanými možnostmi pro nastavení hry jsou určení rozměrů hracího pole a nastavení seedu, jež určuje, jakým náhodným způsobem budou rozřazeny znaky schované na kartách.  Defaultně je random. Dále si lze vybrat, zda bude hrát jeden nebo dva hráči. 
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
+## Testování
 
-```
-cd existing_repo
-git remote add origin https://gitlab.fel.cvut.cz/drahoane/pexeso.git
-git branch -M main
-git push -uf origin main
-```
+### Příklad testů pro hru Pexeso (rozměry 3×2, seed 1):
+-	q
+-	Aq (ekvivalentní s A0q)
+-	AA1q (ekvivalentní s A0A1q)
+-	AA1Bq (ekvivalentní s A0A1B1q)
+-	AA1BCq (ekvivalentní s A0A1B1C0q)
+-	AA1BCB1q (ekvivalentní s A0A1B0C0B1q)
+-	AA1BCB1C1 (ekvivalentní s A0A1B0C0B1C1)
 
-## Integrate with your tools
+### Příklad testů pro hru Pexeso (rozměry 2×2, seed 1,  multiplayer):
+-	ABABAB1BA1 - Player 1, it took you 2 guesses to finish 
+                 Player 2, it took you 6 guesses to finish
 
-- [ ] [Set up project integrations](https://gitlab.fel.cvut.cz/drahoane/pexeso/-/settings/integrations)
+### Příklad testů pro hru Pexeso (rozměry 15×2, seed 1):
+-	A0H0B0I1C0L1D0D1E0K1F0J0G0E1I0O1K0M1L0O0M0G1N0H1A1N1C1J1B1F1
 
-## Collaborate with your team
-
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Automatically merge when pipeline succeeds](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
-
-## Test and Deploy
-
-Use the built-in continuous integration in GitLab.
-
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing(SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
-
-***
-
-# Editing this README
-
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thank you to [makeareadme.com](https://www.makeareadme.com/) for this template.
-
-## Suggestions for a good README
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
-
-## Name
-Choose a self-explaining name for your project.
-
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
-
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
-
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
-
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
-
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
-
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
-
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
-
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
-
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
-
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
-
-## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
